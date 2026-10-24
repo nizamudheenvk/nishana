@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe0ec, #f7b7d2, #e8c9ff);
+    }
+
+    .card {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 50px 35px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(180, 60, 120, 0.2);
+      max-width: 90%;
+    }
+
+    .heart {
+      font-size: 65px;
+      margin-bottom: 20px;
+      animation: beat 1s infinite;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #75405b;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 15px 32px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #ff4081, #e91e63);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 7px 20px rgba(233, 30, 99, 0.3);
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    #message {
+      display: none;
+      margin-top: 25px;
+      color: #d81b60;
+      font-size: 28px;
+      font-weight: bold;
+      animation: appear 0.6s ease;
+    }
+
+    @keyframes beat {
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 25px;
+      pointer-events: none;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-100vh) rotate(30deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>Hey,Nishana 💕</h1>
+    <p>I have a little something to tell you...</p>
+
+    <button onclick="showLove()">
+      Click Me 💌
+    </button>
+
+    <div id="message">I Love You! ❤️🥰</div>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("message").style.display = "block";
+
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent = ["❤️", "💖", "💕", "💗"][
+          Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000);
+      }
+    }
+  </script>
+</body>
+</html>
